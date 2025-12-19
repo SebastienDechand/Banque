@@ -43,6 +43,7 @@
 
     "module": "ESNext",
     "moduleResolution": "node",
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "types": ["jest", "node"]
   }
 }

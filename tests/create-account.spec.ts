@@ -1,3 +1,4 @@
+import { InMemoryAccountRepository } from "../src/infrastructure/in-memory-account.repository";
 import { AccountBuilder } from "./fixtures/account.builder";
 import { createTestFixture } from "./fixtures/test.fixture";
 
@@ -8,7 +9,9 @@ describe("Create Account Use Case", () => {
       .withAccountId("1")
       .withOwnerName("John Doe")
       .build();
-    const { repository, createAccount } = createTestFixture();
+    const { repository, createAccount } = createTestFixture(
+      new InMemoryAccountRepository()
+    );
     // Act
     createAccount.execute(account.id, account.ownerName);
     // Assert

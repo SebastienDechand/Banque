@@ -1,4 +1,3 @@
-import { Account } from "../src/domain/account";
 import { InMemoryAccountRepository } from "../src/infrastructure/in-memory-account.repository";
 import { AccountBuilder } from "./fixtures/account.builder";
 

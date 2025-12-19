@@ -11,7 +11,9 @@ describe("Deposit Money Use Case", () => {
       .withOwnerName("John Doe")
       .build();
     const depositAmount = 1000;
-    const { repository, createAccount, depositMoney } = createTestFixture();
+    const { repository, createAccount, depositMoney } = createTestFixture(
+      new InMemoryAccountRepository()
+    );
     // Act
     createAccount.execute(account.id, account.ownerName);
     depositMoney.execute(account.id, depositAmount);

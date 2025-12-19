@@ -13,7 +13,7 @@ describe("Withdraw Money Use Case", () => {
     const initialDeposit = 1000;
     const withdrawAmount = 500;
     const { repository, createAccount, depositMoney, withdrawMoney } =
-      createTestFixture();
+      createTestFixture(new InMemoryAccountRepository());
     // Act
     createAccount.execute(userAccount.id, userAccount.ownerName);
     depositMoney.execute(userAccount.id, initialDeposit);

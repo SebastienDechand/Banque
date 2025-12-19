@@ -12,7 +12,7 @@ describe("Get Account Balance Use Case", () => {
       .build();
     const initialDeposit = 1000;
     const { createAccount, depositMoney, getAccountBalance } =
-      createTestFixture();
+      createTestFixture(new InMemoryAccountRepository());
     // Act
     createAccount.execute(account.id, account.ownerName);
     depositMoney.execute(account.id, initialDeposit);
