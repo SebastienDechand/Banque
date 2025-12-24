@@ -5,7 +5,7 @@ export class Account {
 
   constructor(id: string, ownerName: string, balance: number = 0) {
     if (!ownerName.trim()) {
-      throw new Error("Owner name cannot be empty");
+      throw new Error('Owner name cannot be empty');
     }
 
     this.id = id;
@@ -15,21 +15,18 @@ export class Account {
 
   deposit(amount: number): void {
     if (amount <= 0) {
-      throw new Error("Deposit amount must be positive");
+      throw new Error('Deposit amount must be positive');
     }
-
     this.balance += amount;
   }
 
   withdraw(amount: number): void {
     if (amount <= 0) {
-      throw new Error("Withdraw amount must be positive");
+      throw new Error('Withdraw amount must be positive');
     }
-
     if (this.balance < amount) {
-      throw new Error("Insufficient funds");
+      throw new Error('Insufficient funds');
     }
-
     this.balance -= amount;
   }
 }

@@ -1,8 +1,8 @@
-import type { AccountRepository } from "../../src/domain/account.repository";
-import { CreateAccountUseCase } from "../../src/application/create-account.usecase";
-import { DepositMoneyUseCase } from "../../src/application/deposit-money.usecase";
-import { WithdrawMoneyUseCase } from "../../src/application/withdraw-money.usecase";
-import { GetAccountBalanceUseCase } from "../../src/application/get-account-balance.usecase";
+import type { AccountRepository } from '../../src/domain/account.repository.interface';
+import { CreateAccountUseCase } from '../../src/application/use-cases/create-account.usecase';
+import { DepositMoneyUseCase } from '../../src/application/use-cases/deposit-money.usecase';
+import { WithdrawMoneyUseCase } from '../../src/application/use-cases/withdraw-money.usecase';
+import { GetAccountBalanceUseCase } from '../../src/application/use-cases/get-account-balance.usecase';
 
 export function createTestFixture(repository: AccountRepository) {
   return {

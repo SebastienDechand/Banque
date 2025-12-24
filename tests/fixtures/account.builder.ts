@@ -1,8 +1,8 @@
-import { Account } from "../../src/domain/account";
+import { Account } from '../../src/domain/account.entity';
 
 export class AccountBuilder {
-  private accountId: string = "default-id";
-  private ownerName: string = "Default Owner";
+  private accountId: string = 'default-id';
+  private ownerName: string = 'Default Owner';
   private initialBalance: number = 0;
 
   withAccountId(accountId: string): AccountBuilder {

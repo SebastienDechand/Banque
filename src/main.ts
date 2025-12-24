@@ -1,31 +1,17 @@
-import { createTestFixture } from "../tests/fixtures/test.fixture";
-import { JsonFileAccountRepository } from "./infrastructure/json-file-account.repository";
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common';
 
-// Initialisation
-const { createAccount, depositMoney, withdrawMoney, getAccountBalance } =
-  createTestFixture(new JsonFileAccountRepository("accounts.json"));
+async function boostrap() {
+  const app = await NestFactory.create(AppModule.forRoot());
 
-// Scénario
-console.log("🏦 Bienvenue à la banque !\n");
+  app.useGlobalPipes(new ValidationPipe());
 
-// Créer un compte
-console.log("📝 Création du compte d'Alice...");
-createAccount.execute("1", "Alice");
-console.log("✅ Compte créé avec succès !");
+  const port = process.env.PORT || 3000;
+  await app.listen(port);
 
-// Déposer de l'argent
-console.log("💰 Dépôt de 116876€...");
-depositMoney.execute("1", 116876);
-console.log("✅ Dépôt effectué avec succès !");
+  console.log(`API Bancaire démarrée sur http://localhost:${port}`);
+  console.log(`MongoDB connecté sur ${process.env.MONGODB_URI}`);
+}
 
-// Retirer de l'argent
-console.log("💸 Retrait de 8563€...");
-withdrawMoney.execute("1", 8563);
-console.log("✅ Retrait effectué avec succès !");
-
-// Vérifier le solde
-console.log("📊 Récupération du solde du compte...");
-const balance = getAccountBalance.execute("1");
-console.log(`\n✅ Solde final d'Alice : ${balance}€`);
-
-console.log("\n📁 Regarde le fichier accounts.json !");
+boostrap();
